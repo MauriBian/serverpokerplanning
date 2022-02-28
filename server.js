@@ -9,8 +9,8 @@ serverConnection.playerConected(server, io)
 
 app.get('/',function(req,res){
     res.send('Socket.io server')
-});
+})
 
 server.listen( config.port || 5000,function(){ // Listens to 8081
-    console.log('Listening on '+server.address().port);
-});
+    console.log('Listening on '+server.address().port)
+})
