@@ -6,18 +6,18 @@ const playerConected = function (server, io) {
           socket.player = {
               id: server.lastPlayderID++,
           }
-          socket.emit('allplayers',getAllPlayers())
+          socket.emit('allplayers',getAllPlayers(io))
           socket.broadcast.emit('newplayer',socket.player)
           console.log(server.lastPlayderID)
       })
 
       socket.on('disconnect',function(){
-        io.emit('remove',socket.player.id)
+        //io.emit('remove',socket.player.id)
     })
   })
 }
 
-function getAllPlayers(){
+function getAllPlayers(io){
   var players = []
   Object.keys(io.sockets.connected).forEach((socketID) => {
       var player = io.sockets.connected[socketID].player
