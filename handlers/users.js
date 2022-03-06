@@ -1,9 +1,13 @@
+var lastPlayerID = 1
+
 module.exports = (io, socket) => {
     const newPlayer = () => {
+        socket.lastPlayderID = lastPlayerID
         socket.player = {
-            id: socket.lastPlayderID++,
+            id: lastPlayerID,
         }
         socket.emit('newplayer', socket.player)
+        lastPlayerID ++
         //socket.broadcast.emit('newplayer',socket.player)
     }
 
